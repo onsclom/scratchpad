@@ -14,7 +14,7 @@
  
 Changes automatically save in your browser's local storage!
  
-Pro tip: Make a bookmark of this page to use it as a scratch pad`
+Pro tip: Make a bookmark of this page to use it as a scratch pad.`
 		}
 	});
 
