@@ -1,7 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
+	import { scale, blur, fade } from 'svelte/transition';
 
 	let text = ""
+	let visible = false
 	onMount(async () => {
 		if (localStorage.getItem('text') != null) {
 			text = localStorage.getItem('text')
@@ -16,6 +18,8 @@ Changes automatically save in your browser's local storage!
  
 Pro tip: Make a bookmark of this page to use it as a scratch pad.`
 		}
+
+		visible = true
 	});
 
 	function saveToLocalStorage() {
@@ -23,10 +27,20 @@ Pro tip: Make a bookmark of this page to use it as a scratch pad.`
 	}
 </script>
 
-<textarea bind:value={text} on:input={saveToLocalStorage}></textarea>
+<main>
+
+	{#if visible}
+	<textarea transition:blur="{{duration: 2000}}" bind:value={text} on:input={saveToLocalStorage}></textarea>
+	{/if}
+</main>
 
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+	main {
+		width: 100%;
+		height: 100%;
+	}
 
 	textarea {
 		display: block;
